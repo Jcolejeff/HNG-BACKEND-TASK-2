@@ -1,11 +1,11 @@
 {
-	"name": "hng-task-1",
+	"name": "hng-task-2",
 	"version": "1.0.0",
-	"description": "#### first hng task",
+	"description": "#### second hng task",
 	"main": "app.js",
 	"type": "module",
 	"scripts": {
-		"start": "node app.js"
+		"start": "nodemon app.js"
 	},
 	"keywords": [],
 	"author": "",

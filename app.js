@@ -12,7 +12,7 @@ import rateLimit from "express-rate-limit";
 import cors from "cors";
 
 // routers
-import userRouter from "./routes/User.js";
+import calculateRouter from "./routes/calculate.js";
 
 // middleware
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -35,7 +35,7 @@ app.use(cors());
 app.use(xss());
 app.use(mongoSanitize());
 
-app.use("/", userRouter);
+app.use("/", calculateRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 

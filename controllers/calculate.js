@@ -1,13 +1,30 @@
 import { StatusCodes } from "http-status-codes";
 import { BadRequestError, NotFoundError } from "../errors/index.js";
 
-const getUser = async (req, res) => {
+const Calculate = async (req, res) => {
+	const { operation_type, x, y } = req.body;
+	let result = "";
+	let operation = "";
+	if (operation_type === "addition") {
+		result = x + y;
+		operation = "addition";
+	} else if (operation_type === "subtraction") {
+		result = x - y;
+		operation = "subtraction";
+	} else if (operation_type === "multiplication") {
+		result = x * y;
+		operation = "multiplication";
+	} else {
+		res
+			.status(StatusCodes.BAD_REQUEST)
+			.json({ msg: "please provide valid operator" });
+		return;
+	}
 	res.status(StatusCodes.OK).json({
-		slackUsername: "Jefferyenokela",
-		backend: true,
-		age: 22,
-		bio: "i go by jeffcole on the internet. I'm currently in the last lap of getting my degree in computer science, I've developed a strong grasp of computer science and web development ideas via my education and alot of online resources as well",
+		slackUsername: "jcolejeff",
+		result: result,
+		operation_type: operation,
 	});
 };
 
-export default getUser;
+export default Calculate;
