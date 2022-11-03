@@ -1,6 +1,6 @@
-### HNG 9 BACKEND TASK 1
+### HNG 9 BACKEND TASK 2
 
-[LIVE](https://hng-task-1-jeff.onrender.com/)
+[LIVE](https://hng-task-2-jeff.onrender.com/)
 
 #### Project Setup
 
