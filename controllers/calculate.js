@@ -3,27 +3,25 @@ import { BadRequestError, NotFoundError } from "../errors/index.js";
 
 const Calculate = async (req, res) => {
 	const { operation_type, x, y } = req.body;
+	const enumValues = {
+		addition: "addition",
+		subtraction: "subtraction",
+		multiplication: "multiplication",
+	};
 	let result = "";
-	let operation = "";
-	if (operation_type === "addition") {
+	if (enumValues[operation_type] === "addition") {
 		result = x + y;
-		operation = "addition";
-	} else if (operation_type === "subtraction") {
+	} else if (enumValues[operation_type] === "subtraction") {
 		result = x - y;
-		operation = "subtraction";
-	} else if (operation_type === "multiplication") {
+	} else if (enumValues[operation_type] === "multiplication") {
 		result = x * y;
-		operation = "multiplication";
 	} else {
-		res
-			.status(StatusCodes.BAD_REQUEST)
-			.json({ msg: "please provide valid operator" });
-		return;
+		throw new BadRequestError("please provide valid operator");
 	}
 	res.status(StatusCodes.OK).json({
 		slackUsername: "jcolejeff",
 		result: result,
-		operation_type: operation,
+		operation_type: enumValues[operation_type],
 	});
 };
 
