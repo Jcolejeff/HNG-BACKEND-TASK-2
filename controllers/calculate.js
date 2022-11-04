@@ -9,11 +9,11 @@ const Calculate = async (req, res) => {
 		multiplication: "multiplication",
 	};
 	let result = "";
-	if (enumValues[operation_type] === "addition") {
+	if (operation_type === enumValues.addition) {
 		result = x + y;
-	} else if (enumValues[operation_type] === "subtraction") {
+	} else if (operation_type === enumValues.subtraction) {
 		result = x - y;
-	} else if (enumValues[operation_type] === "multiplication") {
+	} else if (operation_type === enumValues.multiplication) {
 		result = x * y;
 	} else {
 		throw new BadRequestError("please provide valid operator");
